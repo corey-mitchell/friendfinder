@@ -14,25 +14,155 @@
 
 <body>
     <div class='container'>
-        <div class='jumbotron' >
-            <h1 style="font-size:75px">Survey</h1>
-            <hr>
-            <br>
-            <div>
-                <a href="/">
-                    <button type="button" class="btn btn-lg btn-primary" style="padding:20px">
-                        <span class='fa fa-home'></span>  Go Home
-                    </button>
-                </a>
-            </div>
+        <h1 style="font-size:50px">Survey Questions</h1>
+        <hr>
+
+        <div>
+            <form>
+                <h2>About You</h2><br>
+
+                <h5>Name (Required)</h5>
+                <input type="text" id="name" class="form-control" required><br>
+
+                <h5>Link to photo image (Required)</h5>
+                <input type="text" id="name" class="form-control" required>
+
+                <hr>
+
+                <h3>Question 1</h3>
+                <p>Your mind is always buzzing with unexplored ideas and plans.</p>
+                <select class="form-control" id="q1">
+                    <option value="" disabled selected>Select an Option</option>
+                    <option value="5">5 (Strongly Agree)</option>
+                    <option value="5">4</option>
+                    <option value="5">3 (Neutral)</option>
+                    <option value="5">2</option>
+                    <option value="5">1 (Strongly Disagree)</option>
+                </select><br>
+
+                <h3>Question 2</h3>
+                <p>Generally speaking, you rely more on your experience than your imagination.</p>
+                <select class="form-control" id="q2">
+                    <option value="" disabled selected>Select an Option</option>
+                    <option value="5">5 (Strongly Agree)</option>
+                    <option value="5">4</option>
+                    <option value="5">3 (Neutral)</option>
+                    <option value="5">2</option>
+                    <option value="5">1 (Strongly Disagree)</option>
+                </select><br>
+
+                <h3>Question 3</h3>
+                <p>You find it easy to stay relaxed and focused even when there is some pressure.</p>
+                <select class="form-control" id="q3">
+                    <option value="" disabled selected>Select an Option</option>
+                    <option value="5">5 (Strongly Agree)</option>
+                    <option value="5">4</option>
+                    <option value="5">3 (Neutral)</option>
+                    <option value="5">2</option>
+                    <option value="5">1 (Strongly Disagree)</option>
+                </select><br>
+
+                <h3>Question 4</h3>
+                <p>You rarely do something just out of sheer curiosity.</p>
+                <select class="form-control" id="q4">
+                    <option value="" disabled selected>Select an Option</option>
+                    <option value="5">5 (Strongly Agree)</option>
+                    <option value="5">4</option>
+                    <option value="5">3 (Neutral)</option>
+                    <option value="5">2</option>
+                    <option value="5">1 (Strongly Disagree)</option>
+                </select><br>
+
+                <h3>Question 5</h3>
+                <p>People can rarely upset you.</p>
+                <select class="form-control" id="q5">
+                    <option value="" disabled selected>Select an Option</option>
+                    <option value="5">5 (Strongly Agree)</option>
+                    <option value="5">4</option>
+                    <option value="5">3 (Neutral)</option>
+                    <option value="5">2</option>
+                    <option value="5">1 (Strongly Disagree)</option>
+                </select><br>
+
+                <h3>Question 6</h3>
+                <p>It is often difficult for you to relate to other people’s feelings.</p>
+                <select class="form-control" id="q6">
+                    <option value="" disabled selected>Select an Option</option>
+                    <option value="5">5 (Strongly Agree)</option>
+                    <option value="5">4</option>
+                    <option value="5">3 (Neutral)</option>
+                    <option value="5">2</option>
+                    <option value="5">1 (Strongly Disagree)</option>
+                </select><br>
+
+                <h3>Question 7</h3>
+                <p>In a discussion, truth should be more important than people’s sensitivities.</p>
+                <select class="form-control" id="q7">
+                    <option value="" disabled selected>Select an Option</option>
+                    <option value="5">5 (Strongly Agree)</option>
+                    <option value="5">4</option>
+                    <option value="5">3 (Neutral)</option>
+                    <option value="5">2</option>
+                    <option value="5">1 (Strongly Disagree)</option>
+                </select><br>
+
+                <h3>Question 8</h3>
+                <p>You rarely get carried away by fantasies and ideas.</p>
+                <select class="form-control" id="q8">
+                    <option value="" disabled selected>Select an Option</option>
+                    <option value="5">5 (Strongly Agree)</option>
+                    <option value="5">4</option>
+                    <option value="5">3 (Neutral)</option>
+                    <option value="5">2</option>
+                    <option value="5">1 (Strongly Disagree)</option>
+                </select><br>
+
+                <h3>Question 9</h3>
+                <p>You think that everyone’s views should be respected regardless of whether they are supported by facts or not.</p>
+                <select class="form-control" id="q9">
+                    <option value="" disabled selected>Select an Option</option>
+                    <option value="5">5 (Strongly Agree)</option>
+                    <option value="5">4</option>
+                    <option value="5">3 (Neutral)</option>
+                    <option value="5">2</option>
+                    <option value="5">1 (Strongly Disagree)</option>
+                </select><br>
+
+                <h3>Question 10</h3>
+                <p>You feel more energetic after spending time with a group of people.</p>
+                <select class="form-control" id="q10">
+                    <option value="" disabled selected>Select an Option</option>
+                    <option value="5">5 (Strongly Agree)</option>
+                    <option value="5">4</option>
+                    <option value="5">3 (Neutral)</option>
+                    <option value="5">2</option>
+                    <option value="5">1 (Strongly Disagree)</option>
+                </select><br>
+            </form>
         </div>
 
+        <div>
+            <button type="submit" class="btn btn-primary btn-lg btn-block">
+                <i class="fa fa-check-circle"></i>  Submit
+            </button>
+        </div>
+
+        <hr>
+        
         <div>
             <footer>
                 <a href="#">API Friends List</a>
                 |
                 <a href="https://github.com/corey-mitchell/friendfinder" target="_blank">GitHub Repo</a>
-            </footer>
+            </footer><br>
+
+            <!-- <div>
+                <a href="/">
+                    <button type="button" class="btn btn-lg btn-primary">
+                        <span class='fa fa-home'></span>  Go Home
+                    </button>
+                </a>
+            </div> -->
         </div>
     </div>
 
