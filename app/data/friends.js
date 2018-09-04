@@ -1,8 +1,8 @@
 const friendsList = [
     {
-        name: 'Johnny Watts',
-        photo: '',
-        scores: [5, 3, 2, 4, 1, 4, 3, 5, 3, 2]
+        name: 'Johnny Knoxville',
+        photo: 'https://m.media-amazon.com/images/M/MV5BMTE5Mjk5OTMxMV5BMl5BanBnXkFtZTYwODMyNDE0._V1_UY317_CR8,0,214,317_AL_.jpg',
+        scores: [5, 1, 5, 1, 5, 1, 3, 1, 3, 5]
     }
 ];
 

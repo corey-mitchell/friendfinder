@@ -11,6 +11,9 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // parse application/json
 app.use(bodyParser.json());
 
+// imports api route(s)
+require('./app/routing/apiRoutes')(app);
+
 // imports page routes from htmlRoutes file
 require('./app/routing/htmlRoutes')(app);
 
