@@ -9,6 +9,8 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <!-- Bootstrap Gliphycons -->
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
 
 </head>
 
@@ -19,6 +21,7 @@
 
         <div>
             <form>
+                <!-- About User -->
                 <h2>About You</h2><br>
 
                 <h5>Name (Required)</h5>
@@ -29,6 +32,7 @@
 
                 <hr>
 
+                <!-- Survey Questions -->
                 <h3>Question 1</h3>
                 <p>Your mind is always buzzing with unexplored ideas and plans.</p>
                 <select class="form-control" id="q1">
@@ -141,6 +145,7 @@
             </form>
         </div>
 
+        <!-- Submit Button -->
         <div>
             <button type="submit" class="submit btn btn-primary btn-lg btn-block">
                 <i class="fa fa-check-circle"></i>  Submit
@@ -149,6 +154,7 @@
 
         <hr>
         
+        <!-- Footer Links -->
         <div>
             <footer>
                 <a href="/api/friends">API Friends List</a>
@@ -166,24 +172,21 @@
         </div>
     </div>
 
-<!-- jQuery -->
-<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+    <!-- Submit Button Logic -->
+    <script type="text/javascript">
+        $(".submit").on('click', ()=>{
+            const userScore = {
+                name: $("#name").val().trim(),
+                picture: $("#picture").val().trim(),
+                score: [$("#q1").val(), $("#q2").val(), $("#q3").val(), $("#q4").val(), $("#q5").val(), $("#q6").val(), $("#q7").val(), $("#q8").val(), $("#q9").val(), $("#q10").val()]
+            };
+            const currentURL = window.location.origin;
 
-<script type="text/javascript">
-    $(".submit").on('click', ()=>{
-        const userScore = {
-            name: $("#name").val().trim(),
-            picture: $("#picture").val().trim(),
-            score: [$("#q1").val(), $("#q2").val(), $("#q3").val(), $("#q4").val(), $("#q5").val(), $("#q6").val(), $("#q7").val(), $("#q8").val(), $("#q9").val(), $("#q10").val()]
-        };
+            $.post(`${currentURL}/api/friends`, userScore, (data)=>{
 
-        const currentURL = window.location.origin;
-
-        $.post(`${currentURL}/api/friends`, userScore, (data)=>{         
-
+            });
         });
-    });
-</script>
+    </script>
 
 </body>
 </html>
