@@ -5,7 +5,7 @@
 
 ## Demo
 
-Please check out the demo that is deployed to Heroku, [here.]()
+Please check out the demo that is deployed to Heroku, [here.](https://friend-finder-supreme.herokuapp.com/)
 
 ## Installation
 
