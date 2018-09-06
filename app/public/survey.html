@@ -12,7 +12,7 @@
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
-    <!-- Bootstrap JS Needed for modal--> 
+    <!-- Bootstrap JS, Needed for modal--> 
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 
 
@@ -183,7 +183,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h2 class="modal-title">
-                        <strong>Best Match</strong>
+                        <strong>Your New Friend!</strong>
                     </h2>
                 </div>
                 <div class="modal-body">
@@ -203,27 +203,42 @@
         $("#submit").on('click', (event)=>{
             event.preventDefault();
 
-            // const validateForm=()=>{
-            //     const isValid = true;
-                
-            // };
+            // Checks that all questions have been answered
+            function validateForm() {
+                let isValid = true;
 
-            // Gathers user answers into an object
-            const userScore = {
-                name: $("#name").val().trim(),
-                picture: $("#picture").val().trim(),
-                score: [$("#q1").val(), $("#q2").val(), $("#q3").val(), $("#q4").val(), $("#q5").val(), $("#q6").val(), $("#q7").val(), $("#q8").val(), $("#q9").val(), $("#q10").val()]
+                $(".form-control").each(function() {
+                    if ($(this).val() === '') {
+                        isValid = false;
+                    };
+                });
+
+                return isValid;
             };
 
-            const currentURL = window.location.origin;
-            $.post(`${currentURL}/api/friends`, userScore)
-            .done((data)=>{
-                console.log('response = ' + JSON.stringify(data));
+            // Only post info if all items have been filled out, else displays an alert
+            if(validateForm()) {
+                // Gathers user answers into an object
+                const userScore = {
+                    name: $("#name").val().trim(),
+                    picture: $("#picture").val().trim(),
+                    score: [$("#q1").val(), $("#q2").val(), $("#q3").val(), $("#q4").val(), $("#q5").val(), $("#q6").val(), $("#q7").val(), $("#q8").val(), $("#q9").val(), $("#q10").val()]
+                };
 
-                $('#match-name').html(data.matchName);
-                $('#match-img').attr('src', data.matchImage);
-                $('#results-modal').modal('toggle');
-            });
+                // Posts user answers into API
+                const currentURL = window.location.origin;
+                $.post(`${currentURL}/api/friends`, userScore)
+                .done((data)=>{
+
+                    // Posts closest match into modal
+                    $('#match-name').html(data.matchName);
+                    $('#match-img').attr('src', data.matchImage);
+                    $('#results-modal').modal('toggle');
+                });
+            // Alerts user that they have not answered all the questions
+            } else {
+                alert('Please fill out all fields before submitting.')
+            };
         });
     </script>
 
