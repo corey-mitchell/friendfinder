@@ -1,3 +1,4 @@
+<!DOCTYPE HTML>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -11,6 +12,9 @@
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+    <!-- Bootstrap JS Needed for modal--> 
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
 
 </head>
 
@@ -147,7 +151,7 @@
 
         <!-- Submit Button -->
         <div>
-            <button type="submit" class="submit btn btn-primary btn-lg btn-block">
+            <button type="submit" id="submit" class="btn btn-primary btn-lg btn-block">
                 <i class="fa fa-check-circle"></i>  Submit
             </button>
         </div>
@@ -162,6 +166,7 @@
                 <a href="https://github.com/corey-mitchell/friendfinder" target="_blank">GitHub Repo</a>
             </footer><br>
 
+            <!-- Home Button, I decided to comment out -->
             <!-- <div>
                 <a href="/">
                     <button type="button" class="btn btn-lg btn-primary">
@@ -172,18 +177,52 @@
         </div>
     </div>
 
-    <!-- Submit Button Logic -->
+    <!-- Modal Displaying Closest Friend Match -->
+    <div id="results-modal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 class="modal-title">
+                        <strong>Best Match</strong>
+                    </h2>
+                </div>
+                <div class="modal-body">
+                    <h2 id="match-name"></h2>
+                    <img id="match-img">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Page Logic -->
     <script type="text/javascript">
-        $(".submit").on('click', ()=>{
+        // Activates Submit Button
+        $("#submit").on('click', (event)=>{
+            event.preventDefault();
+
+            // const validateForm=()=>{
+            //     const isValid = true;
+                
+            // };
+
+            // Gathers user answers into an object
             const userScore = {
                 name: $("#name").val().trim(),
                 picture: $("#picture").val().trim(),
                 score: [$("#q1").val(), $("#q2").val(), $("#q3").val(), $("#q4").val(), $("#q5").val(), $("#q6").val(), $("#q7").val(), $("#q8").val(), $("#q9").val(), $("#q10").val()]
             };
+
             const currentURL = window.location.origin;
+            $.post(`${currentURL}/api/friends`, userScore)
+            .done((data)=>{
+                console.log('response = ' + JSON.stringify(data));
 
-            $.post(`${currentURL}/api/friends`, userScore, (data)=>{
-
+                $('#match-name').html(data.matchName);
+                $('#match-img').attr('src', data.matchImage);
+                $('#results-modal').modal('toggle');
             });
         });
     </script>

@@ -1,6 +1,7 @@
+const path = require('path');
 const friendsData = require("../data/friends.js");
 
-// exports app data to use on survey.html
+// exports API routes
 module.exports = (app) => {
     // Gets friend data from friends.js
     app.get('/api/friends', (req, res)=>{
@@ -9,28 +10,36 @@ module.exports = (app) => {
 
     // Post user answers to friend data in friends.js
     app.post('/api/friends', (req, res)=>{
-        console.log(friendsData.map((obj)=>{return obj.score}));
+        const userScore = req.body.score;
 
-        // Logic to compare user score with friends score... working on.
-        const compare = (arr1, arr2)=>{
-            const friendScore = friendsData.map((obj)=>{return obj.score});
-            const userScore = req.body.score;
-            const totalDifferences =[]
+        let matchName = '';
+        let matchImage = '';
+        let totalDifference = 100;
+        // Gets data from possible friends
+        for(let i = 0; i < friendsData.length; i++) {
+            // console.log(friendsData[i]);
+            let diff = 0;
 
-            for(const i = 0; i < userScore; i++) {
-                if (userScore[i] == friendScore[i]){
-
-                }else{
-                    const difference = userScore[i] - friendScore[i];
-                    totalDifferences.push(difference);
-                };
+            // Gets absolute value of difference between friend's score and user score
+            for(let j = 0; j < userScore.length; j++) {
+                diff += Math.abs(friendsData[i].score[j] - userScore[j]);
+                // console.log(diff)
             };
+            // console.log(diff);
 
-            return console.log(totalDifferences);
+            if(diff < totalDifference) {
+                // totalDifference = diff;
+                // console.log(totalDifference);
+                totalDifference = diff;
+                matchName = friendsData[i].name;
+                matchImage = friendsData[i].photo;
+            };
         };
 
         // Pushes user info into friends data.
         // Added at the bottom to keep user from always comparing with themselves.
         friendsData.push(req.body);
+
+        res.json({status: 'OK', matchName: matchName, matchImage: matchImage});
     });
 };
