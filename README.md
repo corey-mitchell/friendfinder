@@ -34,3 +34,7 @@ node server.js
 ```
 
 The application will now be running locally on ```PORT```, in this case, the port is 8080. You can then access it locally from your browser at the URL ```localhost:PORT```, in this case ```localhost:8080```.
+
+## Author
+
+* **Corey Mitchell** - *Initial work* - (https://github.com/corey-mitchell)
