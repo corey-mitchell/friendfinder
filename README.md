@@ -37,4 +37,4 @@ The application will now be running locally on ```PORT```, in this case, the por
 
 ## Author
 
-* **Corey Mitchell** - *Initial work* - (https://github.com/corey-mitchell)
+* **Corey Mitchell** - (https://github.com/corey-mitchell)
